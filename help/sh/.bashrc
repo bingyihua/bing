@@ -1,18 +1,20 @@
 alias my='bash $HOME/my.sh '
-export myfile='~/my.sh'
 alias sb='source ~/.bashrc'
 alias vm='vim ~/my.sh'
 alias vbs='vim ~/.bashrc'
 alias golang='cd ~/help/go'
-alias shell='cd ~/help/shell'
+alias shell='cd ~/help/sh'
 alias sql='cd ~/help/sql'
 alias java='cd ~/help/java'
 alias py='cd ~/help/py'
+alias cui='bash ~/help/sh/my02.sh'
+
+export cuihome="~/help"
+export note="~/help/sh/note"
 
 
 alias psg='ps -ef|grep '
 alias us='cd /data/data/com.termux/files/home/.vim/bundle/vim-snippets/UltiSnips'
-alias cui='cd ~/test'
 alias bashrc='cat ~/.bashrc'
 alias rm='rm -rf'
 alias ll='ls -l'
