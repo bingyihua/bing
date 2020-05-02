@@ -8,7 +8,7 @@ alias sql='cd ~/help/sql'
 alias java='cd ~/help/java'
 alias py='cd ~/help/py'
 alias cui='bash ~/help/sh/my02.sh'
-
+alias backupnote="bash  ~/help/sh/backup_git.sh"
 export cuihome="~/help"
 export note="~/help/sh/note"
 
