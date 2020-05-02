@@ -502,8 +502,9 @@ mysql)
 	";;
 git)
 	echo "//git 提交远程仓库
+	需要复制cat .ssh/id_rsa.pub 的密文到github设置中的ssh中
 	git remote -v
-	//查看详细远程仓库信息
+	//查看详细远程仓库信息,没有就添加
 	git remote rm origin 
 	//删除远程仓库
 	git remote add origin https://username:password@github.com/cuiyubing819/myfirst.git

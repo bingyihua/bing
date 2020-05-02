@@ -1,0 +1,9 @@
+[py_str]
+cmd:cat $help/py/note.py
+[py]
+hello
+python
+[java]
+fuck java
+[haha]
+cmd:pwd

@@ -7,7 +7,9 @@
 # mysqld 启动，mysql-user mysql;执行ALTER USER 'root'@'localhost'IDENTIFIED BY 'test123';即可
 #mysql>update user set host = '%' where user = 'root';#执行更新下面2句可以远程连接mysql
 #mysql>flush privileges;
-
+#创建数据库
+create database lsydb1 default character set utf8;
+ 
 select * from  (select *from `order` limit 5 )as bb  
 	where product  
 	in (select aa.product from  (select *from `order` limit 5 )as aa  GROUP BY aa.product having  avg(aa.number) >3)   	
@@ -64,4 +66,7 @@ SELECT STR_TO_DATE('2019-01-20 16:01:45', '%Y-%m-%d %H:%i:%s'); #select to_date(
 select a,b,c,min(d) d 
 from A
 group by a,b,c 
-              
+
+/*雇员表EMP 结构如下 雇员编号 EMPNO ,   姓名 ENAME ,工作岗位 JOB ,  管理员编号 MGR ,受雇时间 HIREDATE ,
+工资 SAL ,奖金 COMM ,  部门编号 DEPTNO */
+
