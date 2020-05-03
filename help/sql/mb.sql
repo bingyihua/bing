@@ -1,0 +1,20 @@
+select *from sttl_center_data;
+create table sttl_center_data_20180718 as select *from sttl_center_data;
+select *from sttl_center_data_20180718;
+delete from sttl_center_data;
+select *from sttl_center_data;
+select * from V$NLS_PARAMETERS;
+select *from iap_mb_list t  ;
+select *from iap_mb_head t  ;
+select *from mb_head t  ;
+select *from mb_list t  ;
+select *from cap_head  t  ;
+select *from cap_list t  ;
+
+alter table IAP_MB_LIST modify DEALID null;
+delete from iap_mb_list;
+delete from  iap_mb_head;
+delete from mb_head;
+delete from mb_list;
+delete from iap_mb_list;
+delete from  iap_mb_head;

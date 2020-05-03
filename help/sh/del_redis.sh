@@ -31,21 +31,10 @@ do
         done
 done
 
-#
-
-prov=898
-counter=0
-while read line;
-do
-	if test ${counter} -eq 20;then
-		echo "waiting for sleeping 60s..."
-		sleep 60s && counter=0
-	fi
-	echo " cp /home/testB/301908/${line} /opt/data/567"
-	cp /home/testB/301908/${line} /opt/data/567
-	sleep 10s
-	(( counter += 1 ))
-done < <(ls 201908 | awk '{if ((substr($0,4,5)+0) > 5084 )print}')
-
-
-
+#usr/local/redis-3.0.6/src/redis-server /usr/local/cluster/7000/redis.conf
+#启动redis
+#redis-cli -c -h 192.168.117.245 -p 7008 -a abc123
+#进入cli
+echo "LRANGE B1216006.451_VL_ERR  0 -1" | redis-cli -c -h 192.168.117.245 -p 7008 -a abc123  >key
+#导出list值
+#echo "rpush 075588888888 1||1||v0001||20180921145818||20991231235959||1||500||2" | redis-cli -c -h 192.168.117.245 -p 7008 -a abc123

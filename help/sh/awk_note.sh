@@ -1,35 +1,3 @@
-/usr/local/redis-3.0.6/src/redis-server /usr/local/cluster/7000/redis.conf
-#启动redis
-redis-cli -c -h 192.168.117.245 -p 7008 -a abc123
-#
-echo "LRANGE B1216006.451_VL_ERR  0 -1" | redis-cli -c -h 192.168.117.245 -p 7008 -a abc123  >key
-#导出list值
-echo "rpush 075588888888 1||1||v0001||20180921145818||20991231235959||1||500||2" | redis-cli -c -h 192.168.117.245 -p 7008 -a abc123
-
-#!/bin/bash
-rm 1 qq 2 2>/dev/null
-rm ~/551_file.txt 2>/dev/null
-echo "exp hbase to data by args..."
-echo "import org.apache.hadoop.hbase.filter.CompareFilter;import org.apache.hadoop.hbase.filter.SubstringComparator;import org.apache.hadoop.hbase.filter.RowFilter;scan 'vlthb:PRE_MERGE_CDR_VLT_HM_201907_551', {FILTER => RowFilter.new(CompareFilter::CompareOp.valueOf('EQUAL'), SubstringComparator.new('VLT_MERGE_20190714_551_10000'))}"|hbase shell 2>/dev/null  >1
-awk  '{print $1}' 1 |grep VLT_MERGE|awk '{a[$1]++}END{for(i in a){print i}}' >2
-echo "start insert data,total count is $(wc -l 2) ....."
-a=0
-for j in `cat 2`
-do
-	a=$(($a+1))
-	echo "insert $a  record... "
-	q=[]
-	cmd="grep -w $j 1 |awk '{\$2=substr(\$2,13,4);\$4=substr(\$4,7,200)}{print \$1,\$2,\$4}'|sed 's/,//g'"
-	for i in {1..61};
-	do 
-		if [[ `echo $cmd|bash|awk '{print $2}'|grep -w $i` ]]; then
-			q[$i]=`awk '{if($2=='"$i"')print $3}'	<(echo $cmd|bash)`
-	fi
-	done
-	aa=`for i in {1..61};do echo -n ${q[$i]}"|" ;done`
-	echo $aa|sed 's/\(.*\)|\(.*\)/\1\2/' >> ~/551_file.txt
-done
-
 b=("aaa" "bbb" "ccc"); t=${b[@]};awk -vk="$t" 'BEGIN{d=split(k,a," ")}{for(i=1;i<=NF;i++) {if($i~/[a-z]+/) print NR,a[i];}}' dd
 set -- ${b[@]};line=1;while read x y z other;do  [[ "${x}" =~ ^[[:alpha:]]+$ ]] &&  echo "${line} $1";[[ "${y}" =~ ^[[:alpha:]]+$ ]] &&  echo "${line} $2";[[ "${z}" =~ ^[[:alpha:]]+$ ]] &&  echo "${line} $3";(( line+=1 ));done < dd
 
@@ -70,14 +38,31 @@ awk -vFIELDWIDTHS="2 15 15 24 14 6 10 4 10 3 4 1 1 1 6 1 20 15 6"   -vOFS="|"  '
 
 awk -F"|" '{if($62==3 && $9==1) print$12}'   201908_100_cdr.csv 
 
+echo "1 2 3 44 55 66" |awk '{for(i=1;i<=NF;i++)if ($i==44){print FNR ,i}}'
+echo "1 2 3 44 55 66" | awk '{if ($1 > 100) print $1 "bad" ; else print "ok"}' test
+echo "1 2 3 4 5" | awk '{for(i=1;i<=NF;i++) sum+=$i} END{print "sum="sum}'
+awk '$1==22{print FNR}'
+echo "10 23 11
+22 33a ww
+33 eeq qqq"| awk 'BEGIN {sum=0}{if($1 >10){sum+=$1}}END{print sum}'
+awk  'NR==2 {print $2 }' 2
+a='Susan'
+awk -F ";" '{for(i=1;i<=NF;i++)if ($i=='"$a"'){print FNR ,i}}' 2
 
-netstat -apn | grep 8080
-netstat -apn | grep ssh
-#查看ssh端口
+awk    '{for(i=1;i<=NF;i++)if ($i=='250'){print FNR ,i}}' 2
+# awk -F -v str="Susan" '{v="";for (i=1;i<=NF;i++)  if ($i==str) v=v?"" :i;if (v) print str":\t"NR"Line"v"Column"}'  2
 
-ps -ef|grep java
-lsof -i:8080 
-#查看占用端口进程的PID：
-
-
+ echo 'EGFR_1_p chr7 55087057
+EGFR_1_p chr7 55087055
+EGFR_1_p chr7 55087058
+ERBB2_1 chr17 37856493
+ERBB2_1 chr17 37856494
+ERBB2_1 chr17 37856495
+ERBB2_1 chr17 37856496
+ERBB2_1 chr17 37856597
+ERBB2_1 chr17 37856598
+ERBB2_1 chr17 37856599
+ERBB2_2 chr17 37866500
+ERBB2_2 chr17 37866501' |awk '{a[T=$1 FS $2][$3];if(!b[T]++)N++;c[N]=T}END{for(i=1;i<=N;i++)
+{{PROCINFO ["sorted_in"]="@ind_num_asc";x=0;l=length(a[c[i]]);n=0;for(k in a[c[i]]){n++;if(k!=x+1){if(x)print FS x;printf c[i] FS k};x=k;if(n==l)print FS k}}}}'
  

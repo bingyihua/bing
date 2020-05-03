@@ -7,12 +7,15 @@ alias shell='cd ~/help/sh'
 alias sql='cd ~/help/sql'
 alias java='cd ~/help/java'
 alias py='cd ~/help/py'
+alias work='cd ~/help/work'
 alias cui='bash ~/help/sh/my02.sh'
 alias backupnote="bash  ~/help/sh/backup_git.sh"
 export cuihome="~/help"
+export data="~/datalib"
+alias data='cd ~/datalib'
 export note="~/help/sh/note"
-
-
+alias mygit="git@github.com:cuiyubing819/bing.git"
+alias sqls="bash  ~/help/sh/sql.sh"
 alias psg='ps -ef|grep '
 alias us='cd /data/data/com.termux/files/home/.vim/bundle/vim-snippets/UltiSnips'
 alias bashrc='cat ~/.bashrc'
@@ -29,6 +32,6 @@ alias killredis='killall redis-server'
 alias rms='rm .*.go.*'
 alias hbase='cd ~/go/src/github.com/tsuna/gohbase'
 alias darksdk='cd /data/data/com.termux/files/usr/lib/dart-sdk'
-alias ftp='tcpsvd -vE 0.0.0.0 2121 ftpd &'
+alias ftp='nohup tcpsvd -vE 0.0.0.0 2121 ftpd -w /storage/emulated/0/ &'
 PATH=$PATH:
 export PATH
