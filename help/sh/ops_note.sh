@@ -8,6 +8,12 @@ window docker 宿主机虚拟机的用户名docker 密码tcuser
 mount.vboxsf Users /home  挂载共享
 umount -f /home    取消共享
 
+gitlab  默认用户是root，容器开启映射8888:80 8443:443 2222:22 关闭win7防火墙 
+https://blog.csdn.net/fay462298322/article/details/79724970
+
+github删除项目进入项目点最后列的设置，最下面有删除按钮
+github 用户名bingyihua
+
 [py_regular]
 re.subn('b([^\d])', lambda y: 'B'+y[1] , "HBh*b*b1*b2*t1*t2")[0]
 y是b([^\d])的小括号的匹配值*
