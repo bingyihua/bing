@@ -1,0 +1,6 @@
+tcpsvd: listening on 0.0.0.0:2121, starting
+tcpsvd: start 9765 192.168.43.1:2121-192.168.43.128:62177
+tcpsvd: status 1/30
+tcpsvd: end 9765 exit 1
+tcpsvd: status 0/30
+tcpsvd: got signal 1, exit

@@ -66,3 +66,11 @@ ERBB2_2 chr17 37866500
 ERBB2_2 chr17 37866501' |awk '{a[T=$1 FS $2][$3];if(!b[T]++)N++;c[N]=T}END{for(i=1;i<=N;i++)
 {{PROCINFO ["sorted_in"]="@ind_num_asc";x=0;l=length(a[c[i]]);n=0;for(k in a[c[i]]){n++;if(k!=x+1){if(x)print FS x;printf c[i] FS k};x=k;if(n==l)print FS k}}}}'
  
+ awk '/localhost/{print}' /etc/hosts
+awk '/^fe/{print}' /etc/hosts
+awk '/ab$/{print}' /etc/hosts
+awk '/\$25.00/{print}' deals.txt
+awk '/[0-9]/{print}' /etc/hosts 
+awk '/[Kk]T/{print}' /etc/hosts 
+#去重计数
+awk   '{a[$1]++}END{for (j in a) print a[j],j}' consumer

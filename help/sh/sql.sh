@@ -1,4 +1,16 @@
 #!/bin/bash
+start_db(){
+        PIDS=`ps -ef |grep mysql |grep -v grep | awk '{print $2}'`
+        if [ "$PIDS" != "" ]; then
+                echo -n ""
+				rm nohup.out
+        else
+                nohup mysqld &
+                echo  "mysql is start"
+                sleep 1s
+				rm nohup.out
+        fi
+}
 info(){
 	if [[ "$1#" == "#" ]]; then
 		echo “#########################################################”
@@ -8,21 +20,11 @@ info(){
 		echo "#sqls  delete_mytabel  #删表数据"
 		echo "#sqls  sql   #输入原生sql执行"
 		echo “#########################################################”
+		start_db
     	exit 0
 	fi
 }
-start_db(){
-	PIDS=`ps -ef |grep mysql |grep -v grep | awk '{print $2}'`
-	if [ "$PIDS" != "" ]; then
-		echo -n ""
-	else
-		nohup mysqld &
-		echo  "mysql is start"
-		sleep 3s
-	fi
-}
 info $1
-start_db
 case $1 in
 	create* )
 	sql_m=""
